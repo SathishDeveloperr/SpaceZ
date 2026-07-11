@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPACE Z — Beyond Earth</title>
+<meta name="description" content="SPACE Z. A cinematic journey across the rings — engineering tomorrow, beyond Earth.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='%23f0a35c'/%3E%3Cellipse cx='16' cy='16' rx='15' ry='4.5' fill='none' stroke='%238fd3e8' stroke-width='1.6' transform='rotate(-18 16 16)'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ======================= PRELOADER ======================= -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">SPACE&nbsp;Z</div>
+    <div class="loader-bar"><span id="loaderFill"></span></div>
+    <div class="loader-meta">
+      <span id="loaderPct">0%</span>
+      <span class="loader-note">CALIBRATING TRAJECTORY</span>
+    </div>
+    <div class="loader-enter" id="loaderEnter">
+      <button class="enter-btn enter-btn--sound" id="enterSound" data-magnetic>
+        <span class="eq eq--btn"><i></i><i></i><i></i><i></i></span>
+        <span>Enter with sound</span>
+      </button>
+      <button class="enter-btn enter-btn--silent" id="enterSilent" data-magnetic>Enter silent</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= CURSOR ======================= -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"><span id="cursorLabel"></span></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ======================= NAV ======================= -->
+<header class="nav" id="nav">
+  <a class="nav-logo" href="#act-hero" data-scrollto data-magnetic>SPACE&nbsp;Z</a>
+  <nav class="nav-links">
+    <a href="#intro"    data-scrollto data-magnetic>Story</a>
+    <a href="#tech"     data-scrollto data-magnetic>Technology</a>
+    <a href="#act-mission" data-scrollto data-magnetic>Mission</a>
+    <a href="#gallery"  data-scrollto data-magnetic>Gallery</a>
+  </nav>
+  <div class="nav-right">
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound" data-magnetic>
+      <span class="eq"><i></i><i></i><i></i><i></i></span>
+    </button>
+    <a class="nav-cta" href="#future" data-scrollto data-magnetic><span>Join the Mission</span></a>
+  </div>
+</header>
+
+<div class="scroll-progress"><span id="scrollProgressFill"></span></div>
+
+<main class="page" id="page">
+
+  <!-- ======================= ACT I — HERO SEQUENCE ======================= -->
+  <section class="act act-hero" id="act-hero">
+    <div class="act-stage">
+      <canvas class="act-canvas" id="heroCanvas"></canvas>
+
+      <!-- layered parallax -->
+      <div class="layer layer-stars-far" data-hero-layer="starsFar"></div>
+      <div class="layer layer-stars" data-hero-layer="stars"></div>
+      <div class="layer layer-nebula" data-hero-layer="nebula"></div>
+      <div class="layer layer-glow" data-hero-layer="glow"></div>
+      <div class="layer layer-vignette"></div>
+
+      <!-- cinematic titles -->
+      <div class="hero-titles">
+        <div class="hero-title" data-hero-title="0">
+          <p class="ht-kicker">A JOURNEY IN SIX SCENES</p>
+          <h1 class="ht-main" data-split="chars">SPACE Z</h1>
+          <p class="ht-sub">Scroll to begin the crossing</p>
+        </div>
+        <div class="hero-title" data-hero-title="1">
+          <p class="ht-kicker">SCENE 01 — VELOCITY</p>
+          <h2 class="ht-main" data-split="chars">ENGINEERING TOMORROW</h2>
+        </div>
+        <div class="hero-title" data-hero-title="2">
+          <p class="ht-kicker">SCENE 01 — THE RINGS</p>
+          <h2 class="ht-main" data-split="chars">BEYOND EARTH</h2>
+        </div>
+        <div class="hero-title" data-hero-title="3">
+          <p class="ht-kicker">SCENE 01 — ARRIVAL</p>
+          <h2 class="ht-main" data-split="chars">THE FUTURE BEGINS HERE</h2>
+        </div>
+        <div class="hero-title" data-hero-title="4">
+          <p class="ht-kicker">CHAPTER ONE</p>
+          <h2 class="ht-main ht-main--small" data-split="chars">THE CROSSING</h2>
+        </div>
+      </div>
+
+      <div class="hero-hud">
+        <div class="hud-frame"><span>FRAME</span><b id="hudFrame">0000</b></div>
+        <div class="scroll-hint" id="scrollHint">
+          <span class="scroll-hint-track"><span class="scroll-hint-dot"></span></span>
+          <span class="scroll-hint-text">SCROLL</span>
+        </div>
+        <div class="hud-frame hud-frame--right"><span>SYS</span><b>NOMINAL</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SCENE 1 — INTRODUCTION ======================= -->
+  <section class="scene scene-intro" id="intro">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal="fade">01 — INTRODUCTION</p>
+      <h2 class="display" data-split="lines">
+        We left the harbor of Earth so the next thousand generations would have an ocean.
+      </h2>
+      <div class="intro-cols">
+        <p data-reveal="fade">SPACE Z is a deep-system transit program: freight convoys and crewed
+        clippers riding the ring-plane of a gas giant nine light-hours from home. This is the record
+        of the first crossing — captured frame by frame, scored by your scroll.</p>
+        <p data-reveal="fade">Six scenes. Two vessels. One species that refused to stay still.
+        Everything you are about to see is in motion because you are.</p>
+      </div>
+      <div class="intro-marquee" aria-hidden="true">
+        <div class="marquee-track" id="marqueeTrack">
+          <span>BEYOND EARTH — ENGINEERING TOMORROW — THE FUTURE BEGINS HERE —&nbsp;</span>
+          <span>BEYOND EARTH — ENGINEERING TOMORROW — THE FUTURE BEGINS HERE —&nbsp;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SCENE 2 — RESEARCH ======================= -->
+  <section class="scene scene-research" id="research">
+    <div class="wrap research-grid">
+      <div class="research-copy">
+        <div class="research-sticky">
+          <p class="eyebrow" data-reveal="fade">02 — RESEARCH</p>
+          <h2 class="headline" data-split="lines">Ten years of listening to the rings.</h2>
+          <p class="lede" data-reveal="fade">Before a single hull was laid, survey probes flew nine
+          hundred orbits through the ring-plane, mapping shear currents in the ice and dust so a
+          convoy could one day surf them.</p>
+          <ul class="research-facts">
+            <li data-reveal="fade"><b>912</b><span>survey orbits completed</span></li>
+            <li data-reveal="fade"><b>4.2&nbsp;PB</b><span>of ring-shear telemetry</span></li>
+            <li data-reveal="fade"><b>0</b><span>probes lost in the final year</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="research-panels">
+        <figure class="panel" data-panel>
+          <div class="panel-img"><img src="assets/stills/research-corridor.webp" alt="Approach corridor through the ring-plane"></div>
+          <figcaption><b>THE CORRIDOR</b><span>A survey frame from the approach — the lane our convoys now call the freeway.</span></figcaption>
+        </figure>
+        <figure class="panel" data-panel>
+          <div class="panel-img"><img src="assets/stills/research-dust.webp" alt="Dust sea beneath the rings"></div>
+          <figcaption><b>THE DUST SEA</b><span>Charged regolith flows like weather. We learned to read it like sailors read swell.</span></figcaption>
+        </figure>
+        <figure class="panel" data-panel>
+          <div class="panel-img"><img src="assets/stills/research-convoy.webp" alt="Convoy of ships riding the ring current"></div>
+          <figcaption><b>FIRST CONVOY</b><span>Nine vessels riding the shear current in formation — research became routine.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SCENE 3 — TECHNOLOGY (HORIZONTAL) ======================= -->
+  <section class="scene scene-tech" id="tech">
+    <div class="tech-pin" id="techPin">
+      <div class="tech-ghost" id="techGhost" aria-hidden="true">TECHNOLOGY</div>
+      <div class="tech-head wrap">
+        <p class="eyebrow">03 — TECHNOLOGY</p>
+        <h2 class="headline">Built for the long dark.</h2>
+      </div>
+      <div class="tech-track" id="techTrack">
+        <article class="tcard" data-tcard>
+          <span class="tcard-index">T/01</span>
+          <h3>Ion Lattice Drive</h3>
+          <p>A field-shaped ion lattice turns the ring's own charged dust into reaction mass.
+          The convoy refuels by flying.</p>
+          <div class="tcard-meta"><span>THRUST</span><b>84 kN sustained</b></div>
+          <a class="tcard-btn" href="#gallery" data-scrollto data-magnetic>Specification</a>
+        </article>
+        <article class="tcard" data-tcard>
+          <span class="tcard-index">T/02</span>
+          <h3>Adaptive Hull Weave</h3>
+          <p>Micro-actuated plating re-tessellates mid-flight, shrugging off ice at
+          eleven kilometres per second.</p>
+          <div class="tcard-meta"><span>IMPACT RATING</span><b>11 km/s micrometeor</b></div>
+          <a class="tcard-btn" href="#gallery" data-scrollto data-magnetic>Specification</a>
+        </article>
+        <article class="tcard" data-tcard>
+          <span class="tcard-index">T/03</span>
+          <h3>Quantum Star Tracker</h3>
+          <p>Navigation that holds one-metre certainty across nine light-hours —
+          no beacon, no ground station, no doubt.</p>
+          <div class="tcard-meta"><span>DRIFT</span><b>&lt; 1 m / light-hour</b></div>
+          <a class="tcard-btn" href="#gallery" data-scrollto data-magnetic>Specification</a>
+        </article>
+        <article class="tcard" data-tcard>
+          <span class="tcard-index">T/04</span>
+          <h3>Closed-Loop Biosphere</h3>
+          <p>Air, water and food cycle through a living garden core. The crew doesn't
+          carry supplies; they carry a world.</p>
+          <div class="tcard-meta"><span>RECYCLE RATE</span><b>99.7% closed</b></div>
+          <a class="tcard-btn" href="#gallery" data-scrollto data-magnetic>Specification</a>
+        </article>
+        <article class="tcard tcard--wide" data-tcard>
+          <img src="assets/stills/breakout.webp" alt="The ringed giant at full scale">
+          <div class="tcard-wide-copy">
+            <h3>Destination</h3>
+            <p>The giant itself — rings spanning a quarter-million kilometres. Every technology above exists for this view.</p>
+          </div>
+        </article>
+      </div>
+      <div class="tech-progress"><span id="techProgressFill"></span></div>
+    </div>
+  </section>
+
+  <!-- ======================= ACT II — MISSION SEQUENCE ======================= -->
+  <section class="act act-mission" id="act-mission">
+    <div class="act-stage">
+      <canvas class="act-canvas" id="astroCanvas"></canvas>
+      <div class="layer layer-vignette"></div>
+      <div class="layer layer-heat" data-mission-layer="heat"></div>
+
+      <div class="hero-titles">
+        <div class="hero-title" data-mission-title="0">
+          <p class="ht-kicker">04 — MISSION HELIOS</p>
+          <h2 class="ht-main" data-split="chars">THE HUMAN ELEMENT</h2>
+        </div>
+        <div class="hero-title" data-mission-title="1">
+          <p class="ht-kicker">EVA — HOUR SIX</p>
+          <h2 class="ht-main" data-split="chars">SUITED FOR THE IMPOSSIBLE</h2>
+        </div>
+        <div class="hero-title" data-mission-title="2">
+          <p class="ht-kicker">PERIHELION PASS</p>
+          <h2 class="ht-main" data-split="chars">INTO THE FIRE</h2>
+        </div>
+        <div class="hero-title" data-mission-title="3">
+          <p class="ht-kicker">CREW LOG — FINAL ENTRY</p>
+          <h2 class="ht-main" data-split="chars">WE GO ANYWAY</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SCENE 5 — PORTFOLIO / GALLERY ======================= -->
+  <section class="scene scene-gallery" id="gallery">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal="fade">05 — PORTFOLIO</p>
+      <h2 class="headline" data-split="lines">Frames from the frontier.</h2>
+      <p class="lede" data-reveal="fade">Every image below is an unretouched still from the crossing —
+      hover to lean into the frame.</p>
+    </div>
+    <div class="gallery-grid wrap">
+      <figure class="gitem gitem--l" data-gitem data-cursor="VIEW">
+        <div class="gitem-img"><img src="assets/stills/convoy.webp" alt="Convoy formation in the ring current"></div>
+        <figcaption><b>CONVOY NINE</b><span>Formation flight, ring current — day 214</span></figcaption>
+      </figure>
+      <figure class="gitem gitem--s" data-gitem data-cursor="VIEW">
+        <div class="gitem-img"><img src="assets/stills/visor.webp" alt="Astronaut visor reflecting sunfire"></div>
+        <figcaption><b>FIRST LIGHT</b><span>Cmdr. Aiden Vale, EVA one</span></figcaption>
+      </figure>
+      <figure class="gitem gitem--s" data-gitem data-cursor="VIEW">
+        <div class="gitem-img"><img src="assets/stills/ring-core.webp" alt="Deep inside the ring vortex"></div>
+        <figcaption><b>THE THROAT</b><span>Inside the ring vortex</span></figcaption>
+      </figure>
+      <figure class="gitem gitem--l" data-gitem data-cursor="VIEW">
+        <div class="gitem-img"><img src="assets/stills/drift.webp" alt="Astronaut drifting over a burning horizon"></div>
+        <figcaption><b>THE DRIFT</b><span>Helios pass, hour six</span></figcaption>
+      </figure>
+      <figure class="gitem gitem--l" data-gitem data-cursor="VIEW">
+        <div class="gitem-img"><img src="assets/stills/ascent.webp" alt="Astronaut above lava fields"></div>
+        <figcaption><b>PERIHELION</b><span>Eleven minutes above the fire</span></figcaption>
+      </figure>
+      <figure class="gitem gitem--s" data-gitem data-cursor="VIEW">
+        <div class="gitem-img"><img src="assets/stills/breakout.webp" alt="The ringed giant"></div>
+        <figcaption><b>THE GIANT</b><span>Arrival frame, day 401</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ======================= STATISTICS ======================= -->
+  <section class="scene scene-stats" id="stats">
+    <div class="wrap stats-grid">
+      <div class="stat" data-stat><b data-count="401">0</b><span>DAYS IN TRANSIT</span></div>
+      <div class="stat" data-stat><b data-count="9">0</b><span>VESSELS IN CONVOY</span></div>
+      <div class="stat" data-stat><b data-count="248940">0</b><span>KM OF RING SURFED</span></div>
+      <div class="stat" data-stat><b data-count="100" data-suffix="%">0</b><span>CREW RETURNED</span></div>
+    </div>
+  </section>
+
+  <!-- ======================= TIMELINE ======================= -->
+  <section class="scene scene-timeline" id="timeline">
+    <div class="timeline-pin" id="timelinePin">
+      <div class="wrap tl-head">
+        <p class="eyebrow">MISSION LOG</p>
+        <h2 class="headline">The crossing, day by day.</h2>
+      </div>
+      <div class="tl-body wrap">
+        <div class="tl-line"><span id="tlLineFill"></span></div>
+        <ol class="tl-items">
+          <li class="tl-item" data-tl>
+            <span class="tl-dot"></span>
+            <div class="tl-card"><b>DAY 000 — DEPARTURE</b><p>Convoy Nine slips Earth orbit under ion lattice power. Nine ships, forty crew.</p></div>
+          </li>
+          <li class="tl-item" data-tl>
+            <span class="tl-dot"></span>
+            <div class="tl-card"><b>DAY 214 — RING ENTRY</b><p>First vessel enters the shear corridor. The rings take the convoy like a river takes a leaf.</p></div>
+          </li>
+          <li class="tl-item" data-tl>
+            <span class="tl-dot"></span>
+            <div class="tl-card"><b>DAY 289 — MISSION HELIOS</b><p>Cmdr. Vale's EVA over the burning moon. Eleven minutes at perihelion. All suits nominal.</p></div>
+          </li>
+          <li class="tl-item" data-tl>
+            <span class="tl-dot"></span>
+            <div class="tl-card"><b>DAY 401 — ARRIVAL</b><p>Full view of the giant. The crossing is complete; the frontier is open.</p></div>
+          </li>
+          <li class="tl-item" data-tl>
+            <span class="tl-dot"></span>
+            <div class="tl-card"><b>DAY 402 — TOMORROW</b><p>Survey teams chart the return corridor. Convoy Ten is already being built.</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SCENE 6 — FUTURE ======================= -->
+  <section class="scene scene-future" id="future">
+    <div class="wrap future-wrap">
+      <p class="eyebrow" data-reveal="fade">06 — FUTURE</p>
+      <h2 class="display" data-split="lines">The next crossing has your name on the manifest.</h2>
+      <p class="lede" data-reveal="fade">Convoy Ten departs in eighteen months. Engineers, pilots,
+      botanists, storytellers — the frontier hires every trade.</p>
+      <a class="cta-big" href="#act-hero" data-scrollto data-magnetic data-cursor="GO"><span>Begin Again</span></a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================= FOOTER (revealed beneath) ======================= -->
+<footer class="footer" id="footer">
+  <div class="footer-inner">
+    <div class="footer-logo" id="footerLogo">SPACE&nbsp;Z</div>
+    <div class="footer-row">
+      <div class="footer-socials">
+        <a href="#" data-magnetic aria-label="X">X</a>
+        <a href="#" data-magnetic aria-label="Instagram">IG</a>
+        <a href="#" data-magnetic aria-label="YouTube">YT</a>
+        <a href="#" data-magnetic aria-label="Discord">DC</a>
+      </div>
+      <p class="footer-line">Filmed in the ring-plane. Cut by your scroll.</p>
+      <button class="to-top" id="toTop" data-magnetic aria-label="Back to top">↑ TOP</button>
+    </div>
+    <p class="footer-fine">© 2026 SPACE Z PROGRAM — A CINEMATIC SCROLL EXPERIENCE</p>
+  </div>
+</footer>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
